@@ -3,15 +3,23 @@ import Navigation from './Navigation';
 import Logo from './Logo';
 
 export default class Header extends Component{
+    headerStyle = {
+        background: "transparent",
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "20px 45px",
+        borderBottom: "1px solid #212123",
+    }
     render(){
+        let { logo, navigations } = this.props;
         return (
-            <React.Fragment>
+            <div style={ this.headerStyle }>
                 <Logo 
-                    imageURL={require("../img/logo.png")}
-                    siteName={"BitMax"}/>
+                    imageURL={ logo.imageURL }
+                    siteName={ logo.siteName }/>
                 <Navigation 
-                    links={["home", "about", "services"]}/>
-            </React.Fragment>
+                    links={ navigations }/>
+            </div>
             
         )
     }

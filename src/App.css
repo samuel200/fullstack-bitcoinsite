@@ -2,8 +2,15 @@ body{
   padding: 0px;
   margin: 0px;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+  background-image: url(./img/bitcoin-background.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
 }
 
 a{
-  color: #20232a;
+  color: inherit;
+  /* background: ; */
 }
