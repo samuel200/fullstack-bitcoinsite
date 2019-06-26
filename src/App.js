@@ -39,7 +39,39 @@ export default class App extends Component {
       logo:{
         imageURL: require("./img/logo.png"),
         siteName: "BitMax"
-      }
+      },
+      services: [
+        {
+            header: "smart wallet",
+            content: "",
+            iconClass: "sh-icon-data icon-wallet",
+            backgroundImage: "../img/wallet.png",
+        },
+        {
+            header: "instant payout",
+            content: "",
+            iconClass: "sh-icon-data icon-action-undo",
+            backgroundImage: "../img/arrow.png",
+        },
+        {
+            header: "no deposit problems",
+            content: "",
+            iconClass: "sh-icon-data icon-ban",
+            backgroundImage: "../img/nosign.png",
+        },
+        {
+            header: "global",
+            content: "",
+            iconClass: "sh-icon-data icon-globe-alt",
+            backgroundImage: "../img/globe.png",
+        },
+        {
+            header: "simple",
+            content: "",
+            iconClass: "sh-icon-data icon-check",
+            backgroundImage: "../img/check.png",
+        },
+    ]
     }
   }
   render() {
@@ -49,7 +81,7 @@ export default class App extends Component {
           navigations={ this.state.navigations }
           logo={ this.state.logo }/>
         <CenterPiece/>
-        <Services />
+        <Services  services={ this.state.services }/>
       </div>
     )
   }
