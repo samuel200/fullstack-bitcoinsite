@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 export default class CenterPiece extends Component {
     centerPieceStyle = {
         color: "white",
+        minHeight: "400px",
         width: "30%",
         padding: "80px 40px",
         fontSize: "1.5em"
@@ -22,7 +23,7 @@ export default class CenterPiece extends Component {
         color: "#efefef",
         marginRight: "15px",
         background: "transparent",
-        border: "2px solid #efefef"
+        border: "2px solid #efefef",
     }
 
     render() {

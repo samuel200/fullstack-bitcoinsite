@@ -3,6 +3,7 @@ import Header from './components/Header'
 
 import "./App.css"
 import CenterPiece from './components/CenterPiece';
+import Services from './components/Services'
 
 export default class App extends Component {
   constructor(props){
@@ -34,11 +35,6 @@ export default class App extends Component {
           name: "How to start?",
           linkTo: "",
         },
-        {
-          id: 2,
-          name: "login/signup",
-          linkTo: "",
-        },
       ],
       logo:{
         imageURL: require("./img/logo.png"),
@@ -52,7 +48,8 @@ export default class App extends Component {
         <Header 
           navigations={ this.state.navigations }
           logo={ this.state.logo }/>
-        <CenterPiece />
+        <CenterPiece/>
+        <Services />
       </div>
     )
   }
