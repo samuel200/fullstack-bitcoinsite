@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 body{
   padding: 0px;
   margin: 0px;
@@ -20,106 +23,199 @@ a{
 /* Header Styles */
 
 #header {
-  background: "transparent";
-  display: "flex";
-  justify-content: "space-between";
-  padding: "20px 45px";
-  border-bottom: "1px solid #212123";
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 45px 25px 45px;
+  border-bottom: 1px solid #212123;
 }
 
-#home-navigation {
-    color: "#a4a4a4";
-    position: "relative";
-    top: "10px"; 
+#navigation {
+  color: #a4a4a4;
+  position: relative;
+  top: 10px; 
 }
 
 .link-item {
-  color: "inherit";
-  text-decoration: "none";
-  padding: "5px 15px";
-  text-transform: "uppercase";
-  font-size: ".8em";
-  font-weight: "bold";
+  color: inherit;
+  text-decoration: none;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  font-size: .8em;
+  font-weight: bold;
 }
 
 /* style for the layout of the layout */
 
 #logo-section{
-    display: "flex";
-    width: "20%";
-    font-size: "1.3em"
+    display: flex;
+    width: 20%;
+    font-size: 1.3em
 }
 
 #siteName{
-  font-weight: "bold";
-  color: "white";
+  font-weight: bold;
+  color: white;
 }
 
 
 #logo-image{ 
-  width: "50px"
+  width: 50px
 }
 
 #site-name-holder{
-  display: "flex";
-  flex-direction: "column";
-  margin-left: "5px"
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
 }
 
 #logo-sub{
-  font-size: ".6em";
-  color: "#a4a4a4";
-  text-transform: "capitalize"
+  font-size: .6em;
+  color: #a4a4a4;
+  text-transform: capitalize
 }
 
 
 /* Home center-piece styles */
 #center-piece{
-  color: "white";
-  min-height: "400px";
-  width: "30%";
-  padding: "80px 40px";
-  font-size: "1.5em"
+  color: white;
+  min-height: 400px;
+  width: 30%;
+  padding: 80px 40px;
+  font-size: 1.5em
 }
 
 .intro-text{
-  font-size: ".75em"; 
-  color: "#a4a4a4";
+  font-size: .75em; 
+  color: #a4a4a4;
 }
 
 .center-piece-button{
-  border-radius: "10px";
-  padding: "15px 25px";
-  border: "none";
-  font-size: "14px";
-  text-transform: "uppercase";
-  color: "#efefef";
-  margin-right: "15px";
-  background: "transparent";
-  border: "2px solid #efefef";
+  border-radius: 10px;
+  padding: 15px 25px;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #efefef;
+  margin-right: 15px;
+  background: transparent;
+  border: 2px solid #efefef;
+  transition: color .2s, border-color .2s;
+}
+
+.center-piece-button:hover{
+  cursor: pointer;
+  border-color: #f1c24b;
+  color: #f1c24b;
 }
 
 /* services section style */
 #service-section{
-    background: "#353535";
-    width: "100%";
-    display: "flex";
-    justify-content: "space-arround"
+    background: #353535;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 80px 0px;
 }
 .service-cards{
-  min-width: "30%";
-  height: "300px";
-  -moz-box-sizing: "border-box";
-  -webkit-box-sizing: "border-box";
-  box-sizing: "border-box";
-  border-radius: "10px";
-  padding: "40px 25px";
-  text-align: "center";
-  background: "#353535";
+  min-width: 20%;
+  max-width: 30%;
+  min-height: 300px;
+  margin: 10px 1.5%;
+  background: #292929;
+  /* background-image: url(./img/wallet.png); */
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 5px 15px;
 }
 
-.service-icons{
-    font-size: "32px";
-    font-weight: "light";
-    color: "#c98524";
+#service-section .service-cards i{
+  color: #f1c24b;
+  font-size: 3em;
+  font-weight: 100;
+  display: block;
+  margin: 25px auto 40px auto;
+}
+
+.service-cards h3,
+.service-cards p{
+  color: #b2b2b2;
+  line-height: 5vh;
+}
+
+.service-cards h2{
+  color: #ffffff;
+  font-size: 1.7em;
+  text-transform: capitalize;
+  text-align: left;
+  margin: 0px;
+}
+
+.service-cards sub{
+  color: #f1c24b;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  margin: 105px auto 25px auto;
+}
+
+.service-cards h3{
+  color: #ffffff;
+  font-weight: 200;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+/* design for experts section */
+#team-of-experts{
+  color: white;
+  background: #242424;
+}
+
+
+.profile-head{
+  padding: 80px 0px 20px 0px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.profile-head sub{
+  color: #e7ba40;
+  text-transform: uppercase;
+}
+
+.profile-head h2{
+  font-size: 2em;
+  text-transform: capitalize;
+  margin-top: 15px;
+  font-weight: bolder;
+}
+
+.profile-holder{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px;
+}
+
+.profile{
+  flex-basis: 15vw;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.title{
+  color: #e7ba40;
+  margin: 20px 0px;
+  font-size: .8em;
+}
+
+.title,
+.profile-name{
+  padding-left: 10px;
 }

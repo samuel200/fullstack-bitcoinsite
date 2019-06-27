@@ -2,6 +2,7 @@ import  React, { Component } from 'react';
 import Navigation from './Navigation';
 import Logo from './Logo';
 
+
 export default class Header extends Component{
     
     render(){

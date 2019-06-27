@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Logo({imageURL, siteName}) {
+export default function Logo({ imageURL, siteName }) {
     return (
         <div id="logo-section" id="logo-section" >
             <img src={ imageURL } alt={ "logo-image" } id="logo-image"/>

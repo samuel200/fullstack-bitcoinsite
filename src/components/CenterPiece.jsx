@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 export default class CenterPiece extends Component {
     render() {
         return (

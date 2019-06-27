@@ -1,11 +1,12 @@
 {
-  "name": "react-spring-demo",
+  "name": "BitMax",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "style-loader": "^0.23.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,8 +24,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "css-loader": "^3.0.0",
+    "react-id-generator": "^0.1.6",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-spring": "^8.0.25"
+    "react-spring": "^8.0.25",
+    "style-loader": "^0.23.1"
   }
 }
