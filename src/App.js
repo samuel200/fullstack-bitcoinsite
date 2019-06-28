@@ -4,7 +4,9 @@ import Header from './components/Header'
 import "./App.css"
 import CenterPiece from './components/CenterPiece'
 import Services from './components/Services'
-import Experts from './components/TeamOfExperts'
+import TeamOfExperts from './components/TeamOfExperts'
+import Advisors from './components/Advisors'
+import About from './components/About'
 
 export default class App extends Component {
   constructor(props){
@@ -108,9 +110,19 @@ export default class App extends Component {
         ],
         advisors:[
           {
-            name: "",
-            title: "",
-            imageURL: ""
+            name: "Patricia Bright",
+            title: "BOARD ADVISOR",
+            imageURL: require("./img/patricia.jpg")
+          },
+          {
+            name: "James Lincoln",
+            title: "MARKETING ADVISOR",
+            imageURL: require("./img/james.jpg")
+          },
+          {
+            name: "Aarav Nath",
+            title: "TRADING ADVISOR",
+            imageURL: require("./img/aarav.jpg")
           },
         ]
       }
@@ -125,7 +137,9 @@ export default class App extends Component {
           logo={ this.state.logo }/>
         <CenterPiece/>
         <Services  services={ services }/>
-        <Experts profiles={ profiles }/>
+        <TeamOfExperts profiles={ profiles } />
+        <Advisors profiles={ profiles } />
+        <About />
       </div>
     )
   }
