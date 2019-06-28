@@ -7,6 +7,7 @@ import Services from './components/Services'
 import TeamOfExperts from './components/TeamOfExperts'
 import Advisors from './components/Advisors'
 import About from './components/About'
+import Footer from './components/Footer'
 
 export default class App extends Component {
   constructor(props){
@@ -140,6 +141,7 @@ export default class App extends Component {
         <TeamOfExperts profiles={ profiles } />
         <Advisors profiles={ profiles } />
         <About />
+        <Footer navigations={ navigations }/>
       </div>
     )
   }

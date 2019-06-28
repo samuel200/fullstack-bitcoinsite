@@ -236,7 +236,7 @@ a{
 
 #about-holder{
   width: 70%;
-  margin: 50px auto;
+  margin: 100px auto;
   text-align: center;
   background-color: #1b1b1b;
   padding: 50px;
@@ -251,6 +251,7 @@ a{
 #about-section sub{
   color: rgb(117, 117, 117);
   font-size: .8em;
+  font-weight: 500;
 }
 
 #about-section h1{
@@ -269,4 +270,45 @@ a{
 #about-section sub
 {
   color: #e7ba40;
+}
+
+/* footer section styles */
+
+footer{
+  background: black;
+  color: white;
+}
+
+.footer-top{
+  display: flex;
+  justify-content: space-around;
+  padding: 50px;
+  color: #b2b2b2
+}
+
+#footer-nav{
+  display: flex;
+  flex-flow: column;
+}
+
+.footer-top:first-child{
+  text-transform: capitalize;
+  font-size: .8em;
+}
+
+#footer-nav span{
+  padding: 5px;
+  text-transform: uppercase;
+  font-size: .85em;
+  font-weight: bold;
+}
+
+.footer-bottom{
+  background-color: #1d1d1d;
+  color: #a4a4a4;
+  text-align: center;
+  padding: 20px;
+  text-transform: uppercase;
+  font-size: .8em;
+  font-weight: bold;
 }
