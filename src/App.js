@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
-import Header from './components/Header'
-
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import "./App.css"
+
+
+import Header from './components/Header'
 import CenterPiece from './components/CenterPiece'
 import Services from './components/Services'
 import TeamOfExperts from './components/TeamOfExperts'
 import Advisors from './components/Advisors'
 import About from './components/About'
+import Testimonies from './components/Testimonies'
 import Footer from './components/Footer'
+import Logo from './components/Logo'
+import Authentication from './components/Authentication'
+import UserDashBoard from './components/UserDashBoard';
 
 export default class App extends Component {
   constructor(props){
@@ -17,27 +23,27 @@ export default class App extends Component {
         {
           id: 1,
           name: "home",
-          linkTo: "",
+          linkTo: null,
         },
         {
           id: 3,
           name: "services",
-          linkTo: "",
+          linkTo: null,
+        },
+        {
+          id: 2,
+          name: "about",
+          linkTo: null,
         },
         {
           id: 2,
           name: "experts",
-          linkTo: "",
+          linkTo: null,
         },
         {
           id: 2,
-          name: "contacts",
-          linkTo: "",
-        },
-        {
-          id: 2,
-          name: "How to start?",
-          linkTo: "",
+          name: "testimonies",
+          linkTo: null,
         },
       ],
       logo:{
@@ -79,7 +85,7 @@ export default class App extends Component {
       profiles: {
         workers: [
           {
-            name: "Jeremy Klark",
+            name: "James Klark",
             title: "CO-FOUNDER & CEO",
             imageURL: require("./img/jeremy.jpg"),
           },
@@ -126,22 +132,60 @@ export default class App extends Component {
             imageURL: require("./img/aarav.jpg")
           },
         ]
-      }
+      },
+      testimonies:[
+        {
+          thumbnail: require("./img/thumbnail1.jpg"),
+          video: require("./videos/1.mp4")
+        },
+        {
+          thumbnail: require("./img/thumbnail2.jpg"),
+          video: require("./videos/2.mp4")
+        }
+      ]
     }
   }
+
+  setPosition = (title, reference) => {
+    this.setState({navigations: this.state.navigations.map( item =>{
+      if(item.name === title){
+        item.linkTo = reference
+      }
+      return item;
+    })})
+  }
+
   render() {
-    const { navigations, services, profiles } = this.state;
+    const { logo, navigations, services, profiles, testimonies } = this.state;
     return (
       <div>
-        <Header 
-          navigations={ navigations }
-          logo={ this.state.logo }/>
-        <CenterPiece/>
-        <Services  services={ services }/>
-        <TeamOfExperts profiles={ profiles } />
-        <Advisors profiles={ profiles } />
-        <About />
-        <Footer navigations={ navigations }/>
+        <Router>
+          <Route exact path="/" render={()=>{
+            return(
+              <React.Fragment>
+                <Header navigations={ navigations } logo={ this.state.logo }/>
+                <CenterPiece setPosition={ this.setPosition }/>
+                <Services  services={ services } setPosition={ this.setPosition }/>
+                <About  setPosition={ this.setPosition }/>
+                <TeamOfExperts profiles={ profiles }  setPosition={ this.setPosition }/>
+                <Advisors profiles={ profiles } />
+                <Testimonies testimonies={ testimonies } setPosition={ this.setPosition }/>
+                <Footer navigations={ navigations }/>
+              </React.Fragment>
+          )}}/>
+
+          <Route path="/auth/:authType" render={({ match })=>{
+            return(
+              <React.Fragment>
+                <div className="form-logo-holder">
+                  <Logo imageURL={ logo.imageURL } siteName={ logo.siteName }/>
+                </div>
+                <Authentication authType={ match.params.authType }/>
+              </React.Fragment>
+            )
+          }} />
+          <Route path="/user/:username" component={ UserDashBoard } />
+        </Router>
       </div>
     )
   }

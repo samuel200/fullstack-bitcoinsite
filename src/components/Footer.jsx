@@ -1,4 +1,7 @@
 import React from 'react'
+import idGenerator from 'react-id-generator'
+
+import LinkItem from './LinkItem'
 
 export default function Footer({ navigations }) {
     return (
@@ -10,12 +13,12 @@ export default function Footer({ navigations }) {
                 </div>
                 <div id="footer-nav">
                     {
-                    navigations.map(link => <span>{ link.name }</span>)
+                    navigations.map(link => <LinkItem key={ idGenerator() }link={ link }/>)
                     }
                 </div>
             </div>
             <div className="footer-bottom">
-                &copy; 2014 bitmax investments
+                &copy; 2005 bitmax investments
             </div>
         </footer>
     )
