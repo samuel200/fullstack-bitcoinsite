@@ -11,7 +11,7 @@ export default function LoginForm() {
                 <input type="submit" value="login"/>
             </form>
             <div className="recovery-and-creation">
-                <a href="http://">Forgot password?</a>{"  "}
+                <a href="#">Forgot password?</a>{"  "}
                 <Link to="/auth/signup">Create an account.</Link>
             </div>
         </div>

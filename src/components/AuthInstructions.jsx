@@ -1,6 +1,7 @@
 import React from 'react'
-
-export default function AuthInstructions() {
+export default function AuthInstructions({ match }) {
+    let { authType } = match.params;
+    console.log(authType);
     return (
         <div className="instruction-side">
             <div className="overlay">

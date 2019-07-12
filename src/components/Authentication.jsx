@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import '../css/Auth.css'
 import AuthInstructions from './AuthInstructions';
 import AuthForm from './AuthForm';
 
 export default class Authentication extends Component {
-    state = {
-        authType: this.props.authType
-    }
     render() {
-        let { authType } = this.state; 
+        let { match } = this.props;
+
         return (
             <div className="authentication-section">
                 <div className="form-holder">
-                    <AuthInstructions />
-                    <AuthForm  authType={ authType }/>
+                    <Router>
+                        <Route exact path={ "/auth"} render={ ()=> <Redirect to="/auth/login" /> } />
+                        <Route path={ match.path } component={ AuthInstructions } />
+                        <Route path={ `${ match.path }/:authType`} component={ AuthForm } />
+                    </Router>
                 </div>
             </div>
         )

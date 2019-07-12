@@ -3,17 +3,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import "./App.css"
 
 
-import Header from './components/Header'
-import CenterPiece from './components/CenterPiece'
-import Services from './components/Services'
-import TeamOfExperts from './components/TeamOfExperts'
-import Advisors from './components/Advisors'
-import About from './components/About'
-import Testimonies from './components/Testimonies'
-import Footer from './components/Footer'
-import Logo from './components/Logo'
-import Authentication from './components/Authentication'
-import UserDashBoard from './components/UserDashBoard';
+import Home from './components/Home'
+import UserDashBoard from './components/UserDashBoard'
+import Permissions from './components/Permissions';
 
 export default class App extends Component {
   constructor(props){
@@ -160,30 +152,17 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-          <Route exact path="/" render={()=>{
-            return(
-              <React.Fragment>
-                <Header navigations={ navigations } logo={ this.state.logo }/>
-                <CenterPiece setPosition={ this.setPosition }/>
-                <Services  services={ services } setPosition={ this.setPosition }/>
-                <About  setPosition={ this.setPosition }/>
-                <TeamOfExperts profiles={ profiles }  setPosition={ this.setPosition }/>
-                <Advisors profiles={ profiles } />
-                <Testimonies testimonies={ testimonies } setPosition={ this.setPosition }/>
-                <Footer navigations={ navigations }/>
-              </React.Fragment>
-          )}}/>
+          <Route exact path="/" render={props => 
+          <Home {...props}  
+            logo={ logo }
+            navigations={ navigations } 
+            services={ services }
+            profiles={ profiles }
+            testimonies={ testimonies }
+            setPosition={ this.setPosition }/> 
+          } />
 
-          <Route path="/auth/:authType" render={({ match })=>{
-            return(
-              <React.Fragment>
-                <div className="form-logo-holder">
-                  <Logo imageURL={ logo.imageURL } siteName={ logo.siteName }/>
-                </div>
-                <Authentication authType={ match.params.authType }/>
-              </React.Fragment>
-            )
-          }} />
+          <Route path="/auth" component={ props => <Permissions {...props} logo={ logo }/>} />
           <Route path="/user/:username" component={ UserDashBoard } />
         </Router>
       </div>

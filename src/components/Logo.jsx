@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 
 export default function Logo({ imageURL, siteName }) {
     return (
-        <div id="logo-section" id="logo-section" >
-            <img src={ imageURL } alt={ "logo-image" } id="logo-image"/>
+        <div id="logo-section">
+            <img src={ imageURL } alt={ "site-logo" } id="logo-image"/>
             <div id="site-name-holder">
                 <span id="site-name"><Link to="/">{ siteName }</Link></span>
                 <sub id="logo-sub">crypto</sub>
