@@ -6,11 +6,13 @@ import Authentication from './Authentication'
 
 export default function Permissions({ logo, match }) {
     return (
-        <Router>
+        <React.Fragment>
             <div className="form-logo-holder">
                 <Logo imageURL={ logo.imageURL } siteName={ logo.siteName }/>
             </div>
-            <Route path={`${ match.path }`} component={ props => <Authentication {...props}/> } />
-        </Router>
+            <Router>
+                <Route path={`${ match.path }`} component={ props => <Authentication {...props}/> } />
+            </Router>
+        </React.Fragment>
     )
 }

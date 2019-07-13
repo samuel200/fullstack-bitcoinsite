@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import "./App.css"
 
 
@@ -163,6 +163,7 @@ export default class App extends Component {
           } />
 
           <Route path="/auth" component={ props => <Permissions {...props} logo={ logo }/>} />
+          <Route exact path="/user" render={ props => <Redirect to="/auth/login"/>} />
           <Route path="/user/:username" component={ UserDashBoard } />
         </Router>
       </div>
