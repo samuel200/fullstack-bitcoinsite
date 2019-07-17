@@ -13,6 +13,36 @@ export default class UserDashBoard extends Component{
             profileImage: null,
             userName: this.props.authenticatedUser.username
         },
+        plans: [
+            {
+                name: "BASIC PLAN",
+                cost: "$1000",
+                interestRate: "ROI: 0.25 daily",
+                instantPayment: "Instant Payment",
+                paymentMethod: "All Payment Methods Accepted",
+            },
+            {
+                name: "STANDARD PLAN",
+                cost: "$2000",
+                interestRate: "ROI: 0.5% daily",
+                instantPayment: "Instant Payment",
+                paymentMethod: "All Payment Methods Accepted",
+            },
+            {
+                name: "PREMIUM PLAN",
+                cost: "$5000",
+                interestRate: "ROI: 1% daily",
+                instantPayment: "Instant Payment",
+                paymentMethod: "All Payment Methods Accepted",
+            },
+            {
+                name: "PRO PLAN",
+                cost: "$10000",
+                interestRate: "ROI: 1.5% daily",
+                instantPayment: "Instant Payment",
+                paymentMethod: "All Payment Methods Accepted",
+            },
+        ],
         navigations: [
             {
                 name: "profile",
@@ -44,7 +74,7 @@ export default class UserDashBoard extends Component{
             username: this.props.authenticatedUser.username,
             email: "johndoe@email.com",
             traderId: 138983492,
-            balance: 55
+            balance: 0
         },
         current_page: "profile",
         faq:[
@@ -76,14 +106,14 @@ export default class UserDashBoard extends Component{
     }
 
     render() {
-        const{ user, navigations, current_page, userProfile, faq } = this.state;
+        const{ user, navigations, current_page, userProfile, faq, plans } = this.state;
         return (
             <div className="user-dashboard">
                 {
                     this.props.authenticated ?
                     <React.Fragment>
                         <UserDashBoardNav user={ user } navigations={ navigations } changeCurrentPage={ this.changeCurrentPage }/>
-                        <UserDashBoardBody  current_page={ current_page } userProfile={ userProfile } faq={ faq }/>
+                        <UserDashBoardBody changeCurrentPage={ this.changeCurrentPage } current_page={ current_page } userProfile={ userProfile } faq={ faq } plans={ plans }/>
                     </React.Fragment>
                     : <Redirect to="/auth/login"/>
                 }

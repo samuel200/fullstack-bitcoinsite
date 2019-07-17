@@ -1,7 +1,7 @@
 import React from 'react'
 
-// const defaultProfileImageURL = require("../img/default-profile-picture.jpg
-const defaultProfileImageURL = require("../img/james.jpg");
+const defaultProfileImageURL = require("../img/default-profile-picture.jpg");
+// const defaultProfileImageURL = require("../img/james.jpg");
 const fileInput = React.createRef()
 
 function uploadFile(){

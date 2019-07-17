@@ -195,3 +195,66 @@
     font-weight: bold;
     color: white;
 }
+
+#package-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.plan-card{
+    background: #2f3e47;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 30%;
+    margin-right: 20px;
+}
+
+.plan-card span{
+    margin: 10px auto;
+}
+
+button.start{
+    background: white;
+    color: #2f3e47;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+button.start:hover{
+    color: white;
+    background: #3c4d58;
+    cursor: pointer;
+}
+
+#deposit-section{
+    width: 100%;
+    background: #2f3e47;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.mobile-view{
+    display: none;
+}
+
+@media(max-width: 1080px){
+    .mainApp{
+        display: none;
+    }
+    .mobile-view{
+        display: block;
+        background: white;
+        text-align: center;
+        font-size: 40px;
+        margin-top: 80px;
+    }
+    body{
+        background: none;
+    }
+}
