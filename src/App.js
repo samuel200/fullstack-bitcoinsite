@@ -167,7 +167,7 @@ export default class App extends Component {
     return (
       <div>
         <div className="mainApp">
-          <Router>
+          <Router basename="/BitCoinSite">
             <Route exact path="/" render={props => 
             <Home {...props}  
               logo={ logo }
