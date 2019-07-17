@@ -11,6 +11,12 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      authenticated: false,
+      startAuth: null,
+      endAuth: null,
+      authenticatedUser: {
+        username: ""
+      },
       navigations: [
         {
           id: 1,
@@ -45,31 +51,31 @@ export default class App extends Component {
       services: [
         {
             header: "smart wallet",
-            content: "",
+            content: "Our account can serve as a smart wallet for saving and also for investment.",
             iconName: "account_balance_wallet",
             backgroundImage: require("./img/wallet.png"),
         },
         {
             header: "instant payout",
-            content: "",
+            content: "We offer payments to our users using the best and fastest payment mediums.",
             iconName: "reply",
             backgroundImage: require("./img/arrow.png"),
         },
         {
             header: "no deposit problems",
-            content: "",
+            content: "We recieve deposits with cards and even bitcoin for the convinience of our investors.",
             iconName: "block",
             backgroundImage: require("./img/nosign.png"),
         },
         {
             header: "global",
-            content: "",
+            content: "Our services are available to people all around the world interested investing with bitcoin.",
             iconName: "language",
             backgroundImage: require("./img/globe.png"),
         },
         {
             header: "simple",
-            content: "",
+            content: "We have simple and easy to understand packages for our investors to start earning quickly.",
             iconName: "check",
             backgroundImage: require("./img/check.png"),
         },
@@ -147,8 +153,17 @@ export default class App extends Component {
     })})
   }
 
+  setAuthentication = authenticated =>{
+    this.setState({ authenticated })
+    return authenticated;
+  }
+
+  setAuthenticatedUser = user =>{
+    this.setState({authenticatedUser: user})
+  }
+
   render() {
-    const { logo, navigations, services, profiles, testimonies } = this.state;
+    const { logo, navigations, services, profiles, testimonies, authenticated, authenticatedUser } = this.state;
     return (
       <div>
         <Router>
@@ -162,9 +177,13 @@ export default class App extends Component {
             setPosition={ this.setPosition }/> 
           } />
 
-          <Route path="/auth" component={ props => <Permissions {...props} logo={ logo }/>} />
+          <Route path="/auth" component={ props =>(
+            authenticated ? 
+            <Redirect to={"/user/"+authenticatedUser.username} /> :
+            <Permissions {...props} logo={ logo } setAuthentication={ this.setAuthentication } setAuthenticatedUser={ this.setAuthenticatedUser } />
+          )} />
           <Route exact path="/user" render={ props => <Redirect to="/auth/login"/>} />
-          <Route path="/user/:username" component={ UserDashBoard } />
+          <Route path="/user/:username" component={ props => <UserDashBoard {...props} authenticated={ authenticated } authenticatedUser={ authenticatedUser }/>} />
         </Router>
       </div>
     )

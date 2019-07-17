@@ -94,14 +94,26 @@ div.overlay sub{
     margin: auto;
     border-radius: 40px;
     border: none;
-    font-size: .8em;
+    /* font-size: .8em; */
     outline: none;
+    overflow: hidden;
+}
+input[type="password"] {
+    font: small-caption;
+    font-size: 16px;
+    padding: 18px 20px;
+}
+
+.form-side input[type]::placeholder{
+    font: inherit;
+    text-transform: capitalize;
+    letter-spacing: 2px;
 }
 
 .form-side input{
     border: 1px solid rgb(170, 170, 206);
     margin: 20px auto;
-    transition: border .6s;
+    transition: border .3s;
 }
 
 .form-side input:focus{
@@ -152,4 +164,65 @@ div.overlay sub{
     margin: auto;
     display: flex;
     justify-content: space-between;
+}
+
+
+.password-input{
+    position: relative;
+    width: 100%;
+}
+
+.password-input span{
+    position: absolute;
+    top: 35%;
+    right: 20%;
+    font-size: 1em;
+    color: rgb(129, 129, 180);
+    overflow: hidden;
+}
+
+.password-input span i:hover{
+    cursor: pointer;
+}
+
+.error-message{
+    color: white;
+    background: rgb(209, 86, 86);
+    padding: 10px;
+    position: absolute;
+    opacity: 0;
+    border-radius: 10px;
+    font-weight: bold;
+    top: -140px;
+    left: 35%;
+    z-index: 5;
+    font-size: .8em;
+}
+
+.valid{
+    border-color: rgb(75, 114, 75) !important;
+}
+
+.invalid{
+    border-color: rgb(182, 16, 16) !important;
+}
+
+.slide{
+    animation: slidedown 2s backwards;
+
+}
+
+@keyframes slidedown{
+    0%{
+        opacity: 0;
+        top: -140px;
+    }
+    70%{
+        opacity: 1;
+        top: -40px;
+    }
+    100%{
+        opacity: 0;
+        top: -140;
+    }
 }

@@ -7,11 +7,9 @@ import LinkItem from "./LinkItem"
 export default class Navigation extends Component {
     render() {
         return (
-            <div>
-                <nav id="navigation">
-                    { this.props.links.map(link => <LinkItem key={ idGenerator() }link={ link }/>) }
-                </nav>
-            </div>
+            <nav id="navigation">
+                { this.props.links.map(link => <LinkItem key={ idGenerator() }link={ link }/>) }
+            </nav>
         )
     }
 }

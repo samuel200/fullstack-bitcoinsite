@@ -10,7 +10,7 @@ const App = () => (
   <TradingViewWidget
     symbol="NASDAQ:AAPL"
     theme={Themes.DARK}
-    locale="fr"
+    locale="us"
     autosize
   />
 );

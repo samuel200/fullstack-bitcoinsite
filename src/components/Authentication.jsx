@@ -5,16 +5,17 @@ import AuthInstructions from './AuthInstructions';
 import AuthForm from './AuthForm';
 
 export default class Authentication extends Component {
+    
     render() {
-        let { match } = this.props;
-
+        let { match, setUsername, setAuthentication, setAuthenticatedUser } = this.props;
+        
         return (
             <div className="authentication-section">
                 <div className="form-holder">
                     <Router>
                         <Route exact path={ "/auth"} render={ ()=> <Redirect to="/auth/login" /> } />
                         <Route path={ match.path } component={ AuthInstructions } />
-                        <Route path={ `${ match.path }/:authType`} component={ AuthForm } />
+                        <Route path={ `${ match.path }/:authType`} component={props => <AuthForm {...props} setAuthentication={ setAuthentication } setAuthenticatedUser={ setAuthenticatedUser }/>}/>
                     </Router>
                 </div>
             </div>

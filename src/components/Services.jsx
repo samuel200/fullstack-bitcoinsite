@@ -20,7 +20,7 @@ export default class Services extends Component {
                     <h2>Main Facts <br/>About Our Coin And <br/>Bussiness Model</h2>
                 </div>
                 {
-                    services.map( cardDetails => <ServiceCard key={ idGenerator }cardDetails={ cardDetails } />)
+                    services.map( cardDetails => <ServiceCard key={ idGenerator } cardDetails={ cardDetails } />)
                 }
             </div>
         )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 import UserDashBoardNav from './UserDashBoardNav'
 import UserDashBoardBody from './UserDashBoardBody'
@@ -11,7 +11,7 @@ export default class UserDashBoard extends Component{
     state = {
         user: {
             profileImage: null,
-            userName: "John Doe"
+            userName: this.props.authenticatedUser.username
         },
         navigations: [
             {
@@ -30,9 +30,9 @@ export default class UserDashBoard extends Component{
                 iconClass: "fas fa-money-check-alt"
             },
             {
-                name: "support",
-                to: "support",
-                iconClass: "fas fa-question"
+                name: "packages",
+                to: "packages",
+                iconClass: "fas fa-gift"
             },
             {
                 name: "FAQ",
@@ -41,7 +41,7 @@ export default class UserDashBoard extends Component{
             },
         ],
         userProfile:{
-            username: "john doe",
+            username: this.props.authenticatedUser.username,
             email: "johndoe@email.com",
             traderId: 138983492,
             balance: 55
@@ -50,7 +50,7 @@ export default class UserDashBoard extends Component{
         faq:[
             {
                 header: "How do i change the password of my trading account?",
-                content: "You can change the password of your trading account via two means. •One is by clicking on change password in your client cabinet after a succesful login •You can as well try a password reset if you do not remember your password by clicking on \"forgotten password?\" from login page. •Enter your registered email address for the reset link to be sent to you •Click or copy out the reset link sent to you to create new password. "
+                content: "You can change the password of your trading account via two means. \n•One is by clicking on change password in your client cabinet after a succesful login \n•You can as well try a password reset if you do not remember your password by clicking on"
             },
             {
                 header: "What is the account based currency?",
@@ -63,6 +63,10 @@ export default class UserDashBoard extends Component{
             {
                 header: "What is the Deposit payment method accepted?",
                 content: "All clients funds are seperate to operating funds in segregated accounts. We maintain sufficient liquid capital to cover all clients deposits. "
+            },
+            {
+                header:  "Forgotten password?",
+                content: " From login page. \n•Enter your registered email address for the reset link to be sent to you \n•Click or copy out the reset link sent to you to create new password. "
             }
         ]
     }
@@ -75,8 +79,14 @@ export default class UserDashBoard extends Component{
         const{ user, navigations, current_page, userProfile, faq } = this.state;
         return (
             <div className="user-dashboard">
-                <UserDashBoardNav user={ user } navigations={ navigations } changeCurrentPage={ this.changeCurrentPage }/>
-                <UserDashBoardBody  current_page={ current_page } userProfile={ userProfile } faq={ faq }/>
+                {
+                    this.props.authenticated ?
+                    <React.Fragment>
+                        <UserDashBoardNav user={ user } navigations={ navigations } changeCurrentPage={ this.changeCurrentPage }/>
+                        <UserDashBoardBody  current_page={ current_page } userProfile={ userProfile } faq={ faq }/>
+                    </React.Fragment>
+                    : <Redirect to="/auth/login"/>
+                }
             </div>
         )
     }

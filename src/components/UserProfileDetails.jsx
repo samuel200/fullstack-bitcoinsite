@@ -8,7 +8,7 @@ export default function UserProfileDetails({ userProfile }) {
             <p>Username:<span>{ username }</span></p>
             <p>Email:<span>{ email }</span></p>
             <p>Trader ID:<span>{ traderId }</span></p>
-            <p>Balance:<span>{ balance }</span></p>
+            <p>Account Balance:<span>${ balance }</span></p>
         </div>
     )
 }

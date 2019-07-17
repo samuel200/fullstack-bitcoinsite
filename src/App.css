@@ -33,7 +33,7 @@ a{
   display: flex;
   justify-content: space-between;
   padding: 40px 45px 25px 45px;
-  /* border-bottom: 1px solid #212123; */
+  border-bottom: 1px solid #212123;
 }
 
 #navigation {
@@ -290,6 +290,62 @@ a{
 
 
  /* testimonies holder style  */
+
+#text-testimonies{
+  min-width: 100%;
+  min-height: 550px;
+  background-image: url(img/testimonies-background.jpeg);
+  background-size: cover;
+  position: relative;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#text-testimonies .cover{
+  position: absolute;
+  min-width: 100%;
+  min-height: inherit;
+  background: black;
+  opacity: .7;
+  z-index: -1;
+}
+
+#text-testimonies .text-testimony-holder{
+  color: #aca9a9;
+  background: transparent;
+}
+
+.text-testimony-holder{
+  font-size: 1.5em;
+  z-index: 3;
+  text-align: center;
+  align-self: center;
+  width: 40%;
+  opacity: 1;
+  transition: 1s opacity;
+}
+
+.text-testimony-holder div,
+.text-testimony-holder p{
+  margin: 0px;
+  line-height: 35px;
+}
+.text-testimony-holder sub{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.text-testimony-holder h2 span{
+  border-bottom: 3px solid #f1c24b;
+}
+
+.testimony-body i{
+  padding: 20px;
+  font-size: 1.5em;
+}
 
 #testimonies{
   background: #353535;
