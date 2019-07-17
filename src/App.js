@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, browserHistory, Route, Redirect } from 'react-router-dom'
 import "./App.css"
 
 
@@ -167,7 +167,7 @@ export default class App extends Component {
     return (
       <div>
         <div className="mainApp">
-          <Router basename="/BitCoinSite">
+          <Router history={ browserHistory } basename="/BitCoinSite">
             <Route exact path="/" render={props => 
             <Home {...props}  
               logo={ logo }
