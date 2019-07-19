@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HashRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import "./App.css"
 
 
@@ -165,30 +165,25 @@ export default class App extends Component {
   render() {
     const { logo, navigations, services, profiles, testimonies, authenticated, authenticatedUser } = this.state;
     return (
-      <div>
-        <div className="mainApp">
-          <Router>
-            <Route exact path="/" render={props => 
-            <Home {...props}  
-              logo={ logo }
-              navigations={ navigations } 
-              services={ services }
-              profiles={ profiles }
-              testimonies={ testimonies }
-              setPosition={ this.setPosition }/> 
-            } />
+      <Router>
+        <Route exact path="/" render={props => 
+        <Home {...props}  
+          logo={ logo }
+          navigations={ navigations } 
+          services={ services }
+          profiles={ profiles }
+          testimonies={ testimonies }
+          setPosition={ this.setPosition }/> 
+        } />
 
-            <Route path="/auth" component={ props =>(
-              authenticated ? 
-              <Redirect to={"/user/"+authenticatedUser.username} /> :
-              <Permissions {...props} logo={ logo } setAuthentication={ this.setAuthentication } setAuthenticatedUser={ this.setAuthenticatedUser } />
-            )} />
-            <Route exact path="/user" render={ props => <Redirect to="/auth/login"/>} />
-            <Route path="/user/:username" component={ props => <UserDashBoard {...props} authenticated={ authenticated } authenticatedUser={ authenticatedUser }/>} />
-          </Router>
-        </div>
-        <div className="mobile-view">Check site out on a PC<br/>Mobile view not ready yet</div>
-      </div>
+        <Route path="/auth" component={ props =>(
+          authenticated ? 
+          <Redirect to={"/user/"+authenticatedUser.username} /> :
+          <Permissions {...props} logo={ logo } setAuthentication={ this.setAuthentication } setAuthenticatedUser={ this.setAuthenticatedUser } />
+        )} />
+        <Route exact path="/user" render={ props => <Redirect to="/auth/login"/>} />
+        <Route path="/user/:username" component={ props => <UserDashBoard {...props} authenticated={ authenticated } authenticatedUser={ authenticatedUser }/>} />
+      </Router>
     )
   }
 }

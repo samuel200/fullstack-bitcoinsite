@@ -15,7 +15,7 @@ export default class Services extends Component {
         const { services } = this.props;
         return (
             <div id="service-section" ref={ this.innerHTML }>
-                <div className="service-cards" style={ {background: "transparent", overflow: "hidden", minWidth: "30%"} }>
+                <div className="service-cards service-intro" style={ {background: "transparent", overflow: "hidden", minWidth: "30%"} }>
                     <sub>get to know</sub>
                     <h2>Main Facts <br/>About Our Coin And <br/>Bussiness Model</h2>
                 </div>

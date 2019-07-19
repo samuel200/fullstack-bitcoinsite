@@ -209,6 +209,7 @@
     padding: 15px;
     border-radius: 10px;
     text-align: center;
+    min-width: 30%;
     max-width: 30%;
     margin-right: 20px;
 }
@@ -239,22 +240,153 @@ button.start:hover{
     padding: 20px;
 }
 
-.mobile-view{
+.nav-top  button{
     display: none;
 }
 
-@media(max-width: 1080px){
-    .mainApp{
-        display: none;
+
+#faq-section{
+    margin: auto;
+    width: 80%;
+}
+
+
+
+@keyframes show{
+    from{
+        height: 0px;
+        overflow: hidden;
+        opacity: 0;
     }
-    .mobile-view{
-        display: block;
-        background: white;
+    to{
+        height: 250px;
+        overflow: auto;
+        opacity: 1;
+    }
+}
+
+@keyframes hide{
+    from{
+        height: 250px;
+        overflow: auto;
+        opacity: 1;
+    }
+    
+    to{
+        height: 0px;
+        overflow: hidden;
+        opacity: 0;
+    }
+}
+
+
+
+@media screen and (max-width: 1080px){
+    .user-dashboard{
+        flex-direction: column;
+    }
+
+    #user-dashboard-body{
+        margin: 50px 0px 0px 0px;
+        width: 100vw;
+        padding: 0px;
+    }
+
+    /* navigation-responsiveness */
+    
+    #user-dashboard-nav{
+        position: static;
+        width: 100%;
+        position: fixed;
+        z-index: 200;
+    }
+    
+    #user-navigation-section a {
         text-align: center;
-        font-size: 40px;
-        margin-top: 80px;
     }
-    body{
-        background: none;
+
+    #user-dashboard-nav #logo-section{
+        position: relative;
+        top: 20px;
+        padding: 0px;
+    }
+
+    .nav-top{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav-top button{
+        position: relative;
+        top: 20px;
+        right: 20px;
+        display: inline-block;
+        border: none;
+        background: inherit;
+    }
+    
+    .nav-top button i{
+        color: rgb(41, 41, 41);
+        font-size: 38px;
+    }
+
+    .user-nav-profile img{
+        max-width: 20%;
+    }
+
+    /* profile responsiveness */
+
+    .profile-change-form-holder{
+        padding: 20px 0px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    /* packages responsiveness */
+
+    .plan-card{
+        min-width: 40%;
+        max-width: 40%;
+    }
+}
+
+
+@media screen and (max-width: 760px){
+    /* package section responsiveness */
+
+    #user-dashboard-body h1:first-child{
+        font-size: 1.5em;
+        margin: 40px 0px 0px 20px;
+    }
+
+    .plan-card{
+        min-width: 80%;
+        max-width: 90%;
+    }
+
+    /* package end */
+
+    /* user profile responsiveness */
+
+    .bitcoin-widget-holder{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .bitcoin-widget-holder iframe{
+        width: 90%;
+    }
+
+    .profile-change-form-holder form div{
+        width: 80%;
+    }
+
+    .profile-change-form-holder input{
+        width: 80%;
+    }
+
+    .profile-change-form-holder input[type='submit']{
+        width: 100%;
     }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FAQ({ faq }) {
     return (
-      <div>
+      <div id="faq-section">
         <h2>FAQ</h2>
         {faq.map(question =>{
           return (

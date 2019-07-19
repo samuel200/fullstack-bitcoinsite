@@ -50,8 +50,8 @@ div.overlay{
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 100%;
-    min-height: 480px;
+    width: 94.5%;
+    min-height: 450px;
     background: black;
     opacity: .85;
     border-radius: 10px 0px 0px 10px;
@@ -224,5 +224,26 @@ input[type="password"] {
     100%{
         opacity: 0;
         top: -140;
+    }
+}
+
+
+@media screen and (max-width: 1080px){
+    div.instruction-side{
+        display: none;
+    }
+
+    div.form-side{
+        width: 100%;
+    }
+
+    div.form-holder{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 760px){
+    div.form-holder{
+        width: 90%;
     }
 }
