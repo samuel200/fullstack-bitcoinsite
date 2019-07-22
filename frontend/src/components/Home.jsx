@@ -1,5 +1,4 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 
 import Header from './Header'
 import CenterPiece from './CenterPiece'
@@ -12,9 +11,15 @@ import Footer from './Footer'
 import HomeMarquese from './HomeMarquese';
 
 
-export default function ({ logo, navigations, services, profiles, testimonies, setPosition }){
+export default function ({ logo, navigations, services, profiles, testimonies, setPosition, fetched }){
+    
+    useEffect(()=>{
+        console.log('loaded')
+    }, [])
+
+
     return(
-        <React.Fragment>
+        <div>
             <Header navigations={ navigations } logo={ logo }/>
             <HomeMarquese />
             <CenterPiece setPosition={ setPosition }/>
@@ -24,6 +29,6 @@ export default function ({ logo, navigations, services, profiles, testimonies, s
             <Advisors profiles={ profiles } />
             <Testimonies testimonies={ testimonies } setPosition={ setPosition }/>
             <Footer navigations={ navigations }/>
-        </React.Fragment>
+        </div>
     )
 }

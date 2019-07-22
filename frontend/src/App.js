@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import "./App.css"
 
 
-import Home from './components/Home'
-import UserDashBoard from './components/UserDashBoard'
-import Permissions from './components/Permissions';
+// import UserDashBoard from './components/UserDashBoard'
+// import Permissions from './components/Permissions';
+import Loading from './Loading'
+
+let HomeComponent = lazy(()=> import('./components/Home'));
+let Permissions = lazy(()=> import('./components/Permissions'));
+let UserDashBoard = lazy(()=> import('./components/UserDashBoard'))
 
 export default class App extends Component {
   constructor(props){
@@ -166,23 +170,36 @@ export default class App extends Component {
     const { logo, navigations, services, profiles, testimonies, authenticated, authenticatedUser } = this.state;
     return (
       <Router>
-        <Route exact path="/" render={props => 
-        <Home {...props}  
-          logo={ logo }
-          navigations={ navigations } 
-          services={ services }
-          profiles={ profiles }
-          testimonies={ testimonies }
-          setPosition={ this.setPosition }/> 
+        <Route exact path="/" render={props =>{
+          return(
+            <Suspense fallback={<Loading />}>
+                <HomeComponent {...props}  
+                  logo={ logo }
+                  navigations={ navigations } 
+                  services={ services }
+                  profiles={ profiles }
+                  testimonies={ testimonies }
+                  setPosition={ this.setPosition }/> 
+            </Suspense>
+          )   
+        } 
         } />
 
         <Route path="/auth" component={ props =>(
           authenticated ? 
           <Redirect to={"/user/"+authenticatedUser.username} /> :
-          <Permissions {...props} logo={ logo } setAuthentication={ this.setAuthentication } setAuthenticatedUser={ this.setAuthenticatedUser } />
+          <Suspense fallback={<Loading />}>
+            <Permissions {...props} logo={ logo } setAuthentication={ this.setAuthentication } setAuthenticatedUser={ this.setAuthenticatedUser } />
+          </Suspense>
         )} />
         <Route exact path="/user" render={ props => <Redirect to="/auth/login"/>} />
-        <Route path="/user/:username" component={ props => <UserDashBoard {...props} authenticated={ authenticated } authenticatedUser={ authenticatedUser }/>} />
+        <Route path="/user/:username" component={ props =>{
+          return(
+            <Suspense fallback={<Loading />}>
+              <UserDashBoard {...props} authenticated={ authenticated } authenticatedUser={ authenticatedUser }/>
+            </Suspense>
+          )
+        }} />
       </Router>
     )
   }

@@ -300,6 +300,11 @@ button.start:hover{
         position: fixed;
         z-index: 200;
     }
+    .user-nav-profile,
+    #user-navigation-section{
+        height: 0px;
+        overflow: hidden;
+    }
     
     #user-navigation-section a {
         text-align: center;

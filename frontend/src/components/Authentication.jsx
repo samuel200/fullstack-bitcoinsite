@@ -8,7 +8,7 @@ export default class Authentication extends Component {
     
     render() {
         let { match, setUsername, setAuthentication, setAuthenticatedUser } = this.props;
-        
+
         return (
             <div className="authentication-section">
                 <div className="form-holder">
