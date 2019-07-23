@@ -259,7 +259,7 @@ button.start:hover{
         opacity: 0;
     }
     to{
-        height: 250px;
+        height: 400px;
         overflow: auto;
         opacity: 1;
     }
@@ -267,7 +267,7 @@ button.start:hover{
 
 @keyframes hide{
     from{
-        height: 250px;
+        height: 400px;
         overflow: auto;
         opacity: 1;
     }

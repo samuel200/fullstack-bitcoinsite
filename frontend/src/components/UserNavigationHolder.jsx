@@ -8,7 +8,7 @@ visibleStyle = {
     animation: "show 1s forwards"
 };
 
-export default function UserNavigationHolder({ navigations, changeCurrentPage, hidden}) {
+export default function UserNavigationHolder({ navigations, changeCurrentPage, hidden, setAuthentication, setAuthenticatedUser}) {
     return (
         <div id="user-navigation-section" style={ hidden ? hiddenStyle : visibleStyle }>
             <h4>Navigations</h4>
@@ -18,7 +18,11 @@ export default function UserNavigationHolder({ navigations, changeCurrentPage, h
                     changeCurrentPage(item.name);
                 }} style={{display: 'flex', justifyContent: 'space-evenly'}}><i className={ item.iconClass }></i> <i>{ item.name }</i></a>)
             }
-            <a href="#" style={{display: 'flex', justifyContent: 'space-evenly'}}><i className="fas fa-power-off"></i><i>sign out</i></a>
+            <a href="#" style={{display: 'flex', justifyContent: 'space-evenly'}} onClick={()=>{
+                setAuthenticatedUser({})
+                setAuthentication(false)
+                localStorage.removeItem('authenticatedUser')
+            }}><i className="fas fa-power-off"></i><i>sign out</i></a>
         </div>
     )
 }

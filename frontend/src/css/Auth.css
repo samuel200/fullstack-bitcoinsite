@@ -212,6 +212,26 @@ input[type="password"] {
 
 }
 
+#withdrawal-form {
+    min-width: 30vw;
+    min-height: 55vh;
+    margin: auto;
+    background: rgb(60, 99, 114);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+#withdrawal-form input{
+    font: inherit;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(46, 87, 104);
+    outline: none;
+}
+
 @keyframes slidedown{
     0%{
         opacity: 0;

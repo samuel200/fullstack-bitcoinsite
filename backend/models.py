@@ -18,6 +18,10 @@ class Users(models.Model):
     password = models.CharField(max_length=100)
     balance = models.FloatField(default=0)
     trader_id = models.IntegerField(default=randint(100000000, 9999999999))
+    profile_image = models.ImageField(default="default-profile-picture.jpg")
+    
+    def __str__(self):
+        return self.username
 
 class Withdrawals(models.Model):
     transaction_time = models.DateTimeField(auto_now_add=True)
@@ -44,5 +48,5 @@ class Workers(models.Model):
         return self.name
 
 class BitcoinAddress(models.Model):
-    address = models.CharField(max_length=100)
+    address = models.CharField(max_length=100, blank=True)
 

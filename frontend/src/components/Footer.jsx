@@ -9,7 +9,7 @@ export default function Footer({ navigations }) {
             <div className="footer-top">
                 <div>
                     <h3>contact us</h3>
-                    <a href="#">account@bitmax.com</a>
+                    <a href="mailto:bitmax099@gmail.com">account@bitmax.com</a>
                 </div>
                 <div id="footer-nav">
                     {

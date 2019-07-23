@@ -3,6 +3,7 @@ import UserProfile from './UserProfile';
 import FAQ from './FAQ';
 import Packages from './Packages';
 import Deposit from './Deposit';
+import Withdrawal from './Withdrawal';
 
 export default function UserDashBoardBody({ current_page, userProfile, faq, plans }) {
     let page = <div></div>
@@ -24,7 +25,10 @@ export default function UserDashBoardBody({ current_page, userProfile, faq, plan
         case 'deposit':
             page = <Deposit packageName="special"/>
             break;
-
+        case 'withdrawal':
+            page = <Withdrawal />
+            break;
+            
         default:
             page = <div />
             break;

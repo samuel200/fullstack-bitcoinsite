@@ -9,10 +9,6 @@ import '../css/user-dashboard.css'
 
 export default class UserDashBoard extends Component{
     state = {
-        user: {
-            profileImage: null,
-            userName: this.props.authenticatedUser.username
-        },
         plans: [
             {
                 name: "BASIC PLAN",
@@ -70,12 +66,6 @@ export default class UserDashBoard extends Component{
                 iconClass: "fas fa-envelope"
             },
         ],
-        userProfile:{
-            username: this.props.authenticatedUser.username,
-            email: "johndoe@email.com",
-            traderId: 138983492,
-            balance: 0
-        },
         current_page: "profile",
         faq:[
             {
@@ -106,14 +96,14 @@ export default class UserDashBoard extends Component{
     }
 
     render() {
-        const{ user, navigations, current_page, userProfile, faq, plans } = this.state;
+        const{ navigations, current_page, faq, plans } = this.state;
         return (
             <div className="user-dashboard">
                 {
                     this.props.authenticated ?
                     <React.Fragment>
-                        <UserDashBoardNav user={ user } navigations={ navigations } changeCurrentPage={ this.changeCurrentPage }/>
-                        <UserDashBoardBody changeCurrentPage={ this.changeCurrentPage } current_page={ current_page } userProfile={ userProfile } faq={ faq } plans={ plans }/>
+                        <UserDashBoardNav user={ this.props.authenticatedUser } navigations={ navigations } changeCurrentPage={ this.changeCurrentPage } setAuthentication={ this.props.setAuthentication } setAuthenticatedUser={ this.props.setAuthenticatedUser }/>
+                        <UserDashBoardBody changeCurrentPage={ this.changeCurrentPage } current_page={ current_page } userProfile={ this.props.authenticatedUser } faq={ faq } plans={ plans }/>
                     </React.Fragment>
                     : <Redirect to="/auth/login"/>
                 }

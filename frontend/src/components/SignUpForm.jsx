@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+import url from '../DomainName'
 
 let signupParent;
 
-const validateSignUP = setErrorMessage =>{
+const showError = (errorMessage, setErrorMessage, errorHolder) => {
+    setErrorMessage(errorMessage)
+    setTimeout(()=>{
+        errorHolder.style.animation = "slidedown 2s backwards"
+    }, 100)
+    errorHolder.style.animation = "";
+}
+
+const validateSignUP = (setErrorMessage, setAuthentication, setAuthenticatedUser) =>{
     const username = signupParent.querySelector("[name='username']").value;
     const email = signupParent.querySelector("[name='email']").value;
     const password = signupParent.querySelector("[name='password']").value;
@@ -11,14 +21,24 @@ const validateSignUP = setErrorMessage =>{
     const passwordTest = /[a-zA-Z\d]{8,}/;
 
     if(!(passwordTest.test(password) && passwordTest.test(passwordConfirm.value))){
-        setErrorMessage("Password less than 8 digits")
-    }else if(password.value === passwordConfirm.value){
-        setErrorMessage("Password does not match")
+        showError("Password less than 8 digits", setErrorMessage, errorHolder)
+    }else if(password !== passwordConfirm){
+        showError("Password does not match", setErrorMessage, errorHolder)
+    }else{
+        axios.post(url.domain_url+"/signup/", {username, email, password})
+        .then(response =>{
+            localStorage.setItem('authenticateduser', JSON.stringify(response.data));
+            setAuthenticatedUser(response.data);
+            setAuthentication(true);
+        })
+        .catch(error =>{
+            console.log(error);
+            if(error.status == "500"){
+                showError("Email not unique", setErrorMessage, errorHolder)
+            }
+            showError("Error in signup", setErrorMessage, errorHolder)
+        })
     }
-    setTimeout(()=>{
-        errorHolder.style.animation = "slidedown 2s backwards"
-    }, 100)
-    errorHolder.style.animation = "";
 }
 
 const usernameValidation = e =>{
@@ -57,17 +77,19 @@ const passwordValidation = e =>{
     }
 }
 
-export default function LoginForm() {
+export default function LoginForm({ setAuthentication, setAuthenticatedUser }) {
     let [clicked, setClicked] = useState(false);
     let [confirmClicked, setConfirmClicked] = useState(false)
     let [errorMessage, setErrorMessage] = useState("Error")
+    let [loading, setLoading] = useState(false);
+
     return (
         <div style={ {position: 'relative'} } ref={el=> signupParent = el}>
             <div className="error-message">{ errorMessage }</div>
             <sub>Enter your details to create account.</sub>
             <form action="#" method="post" onSubmit={e=>{ 
                 e.preventDefault();
-                validateSignUP(setErrorMessage);
+                validateSignUP(setErrorMessage, setAuthentication, setAuthenticatedUser);
                 }} >
                 <input type="text" name="username" placeholder="Username" onChange={ usernameValidation }/>
                 <input type="email" name="email" placeholder="Email" onChange={ emailValidation }/>
@@ -87,8 +109,7 @@ export default function LoginForm() {
                         } }></i>
                     </span>
                 </div>
-                <input type="submit" value="Register"/>
-            
+                <div><i className="fas fa-spinner fa-spin" style={{display: loading ? "inline" : "none"}}></i><input type="submit" value="Register" disabled={!loading ? false : true}/></div>
             </form>
         </div>
     )

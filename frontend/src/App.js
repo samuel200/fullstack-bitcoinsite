@@ -19,7 +19,6 @@ export default class App extends Component {
       startAuth: null,
       endAuth: null,
       authenticatedUser: {
-        username: ""
       },
       navigations: [
         {
@@ -148,6 +147,15 @@ export default class App extends Component {
     }
   }
 
+  componentWillMount(){
+    if(localStorage.getItem("authenticatedUser")){
+      this.setState({
+        authenticated: true, 
+        authenticatedUser: JSON.parse(localStorage.getItem("authenticatedUser"))
+      });
+    }
+  }
+
   setPosition = (title, reference) => {
     this.setState({navigations: this.state.navigations.map( item =>{
       if(item.name === title){
@@ -164,6 +172,10 @@ export default class App extends Component {
 
   setAuthenticatedUser = user =>{
     this.setState({authenticatedUser: user})
+    setTimeout(()=>{
+      this.setState({authenticated: false, authenticatedUser: {}});
+      localStorage.removeItem('authenticatedUser');
+    }, 1000*3600*3)
   }
 
   render() {
@@ -196,7 +208,7 @@ export default class App extends Component {
         <Route path="/user/:username" component={ props =>{
           return(
             <Suspense fallback={<Loading />}>
-              <UserDashBoard {...props} authenticated={ authenticated } authenticatedUser={ authenticatedUser }/>
+              <UserDashBoard {...props} authenticated={ authenticated } setAuthentication={ this.setAuthentication } setAuthenticatedUser={ this.setAuthenticatedUser } authenticatedUser={ authenticatedUser }/>
             </Suspense>
           )
         }} />

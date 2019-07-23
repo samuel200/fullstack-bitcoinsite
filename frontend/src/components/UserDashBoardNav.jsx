@@ -1,11 +1,11 @@
-import React, { useState, createRef } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import Logo from './Logo'
 import UserNavProfile from './UserNavProfile'
 import UserNavigationHolder from './UserNavigationHolder'
 
-function UserDashBoardNav({ user, navigations, changeCurrentPage, match }) {
+function UserDashBoardNav({ user, navigations, changeCurrentPage, setAuthenticatedUser, setAuthentication, match }) {
     const { userName, profileImage } = user;
     let [hidden, setHidden] = useState(false);
 
@@ -21,8 +21,8 @@ function UserDashBoardNav({ user, navigations, changeCurrentPage, match }) {
                     e.target.parentNode.click();
                 }}></i></button>
             </div>
-            <UserNavProfile imageURL={ profileImage } userName={ userName } hidden={ hidden }/>
-            <UserNavigationHolder navigations={ navigations } userName={ userName } changeCurrentPage={ changeCurrentPage } hidden={ hidden }/>
+            {/* <UserNavProfile imageURL={ profileImage } userName={ userName } hidden={ hidden }/> */}
+            <UserNavigationHolder navigations={ navigations } userName={ userName } setAuthenticatedUser={setAuthenticatedUser} setAuthentication={ setAuthentication } changeCurrentPage={ changeCurrentPage } hidden={ hidden }/>
         </div>
     )
 }

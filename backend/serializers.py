@@ -5,7 +5,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Services
-        fields = ["header", "content", "iconName", "backgroundImage"]
+        fields = ["header", "content", "iconName", "backgroundImage", "password"]
     
 class WorkerSerializer(serializers.ModelSerializer):
 
@@ -18,4 +18,10 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Users
-        fields = ["username", "email", "password", "trader_id"]
+        fields = ["username", "email", "profile_image", "trader_id", "balance"]
+
+class BitcoinAddressSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.BitcoinAddress
+        fields = ['address']

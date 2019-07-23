@@ -8,7 +8,7 @@ export default function PlanCard({ planType }) {
             <span>{ planType.interestRate }</span>
             <span>{ planType.instantPayment }</span>
             <span>{ planType.paymentMethod }</span>
-            <button className="start">Get Started</button>
+            {/* <button className="start">Get Started</button> */}
         </div>
     )
 }
