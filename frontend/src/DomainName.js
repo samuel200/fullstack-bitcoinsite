@@ -1,3 +1,3 @@
-const url = {domain_url: "http://localhost:8000"}
+const url = {domain_url: "www.bitmaxinvestment.com"}
 
 export default url;
