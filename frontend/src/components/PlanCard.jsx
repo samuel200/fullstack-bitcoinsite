@@ -1,8 +1,10 @@
 import React from 'react'
 
-export default function PlanCard({ planType }) {
+export default function PlanCard({ planType, changeCurrentPage }) {
     return (
-        <div className="plan-card">
+        <div className="plan-card" onClick={()=>{
+            changeCurrentPage("deposit")
+        }}>
             <p className="plan-name">{ planType.name }</p>
             <h1 className="plan-cost">{ planType.cost }</h1>
             <span>{ planType.interestRate }</span>

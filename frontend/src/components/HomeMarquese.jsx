@@ -43,10 +43,10 @@ export default class HomeMarquese extends Component {
 
     render() {
         return (
-            <div class="tradingview-widget-container" ref={ this.scriptHolder }>
-            <div class="tradingview-widget-container__widget"></div>
-            <div class="tradingview-widget-copyright">
-                <a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Ticker Tape</span></a> by TradingView
+            <div className="tradingview-widget-container" ref={ this.scriptHolder }>
+            <div className="tradingview-widget-container__widget"></div>
+            <div className="tradingview-widget-copyright">
+                <a href="https://www.tradingview.com" rel="noopener" target="_blank"><span className="blue-text">Ticker Tape</span></a> by TradingView
                 </div>
             </div>
         )

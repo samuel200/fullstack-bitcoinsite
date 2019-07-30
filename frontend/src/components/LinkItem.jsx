@@ -1,9 +1,7 @@
 import React from 'react'
 
 function scroll(el){
-    console.log(el)
     el.current.scrollIntoView({behavior: "smooth"});
-    console.log("OVER HERE scrolling")
 }
 
 export default function LinkItem({ link }) {

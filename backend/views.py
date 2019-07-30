@@ -52,7 +52,7 @@ def change_email(request, username):
 
 @api_view(['POST'])
 def change_password(request, username):
-    obj = Users.objects.get(username=username)
+    obj = get_object_or_404(Users, username=username)
     obj.password = request.data['password']
     obj.save()
     return Response(UserSerializer(obj).data, status=status.HTTP_200_OK)

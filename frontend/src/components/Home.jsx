@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import Header from './Header'
 import CenterPiece from './CenterPiece'
@@ -12,12 +12,6 @@ import HomeMarquese from './HomeMarquese';
 
 
 export default function ({ logo, navigations, services, profiles, testimonies, setPosition, fetched }){
-    
-    useEffect(()=>{
-        console.log('loaded')
-    }, [])
-
-
     return(
         <div>
             <Header navigations={ navigations } logo={ logo }/>

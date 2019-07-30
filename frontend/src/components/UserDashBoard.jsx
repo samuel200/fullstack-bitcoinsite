@@ -14,28 +14,28 @@ export default class UserDashBoard extends Component{
                 name: "BASIC PLAN",
                 cost: "$1000",
                 interestRate: "ROI: 0.25 daily",
-                instantPayment: "Instant Payment",
+                instantPayment: "Cash Out After 30 Days",
                 paymentMethod: "All Payment Methods Accepted",
             },
             {
                 name: "STANDARD PLAN",
                 cost: "$2000",
                 interestRate: "ROI: 0.5% daily",
-                instantPayment: "Instant Payment",
+                instantPayment: "Cash Out After 30 Days",
                 paymentMethod: "All Payment Methods Accepted",
             },
             {
                 name: "PREMIUM PLAN",
                 cost: "$5000",
                 interestRate: "ROI: 1% daily",
-                instantPayment: "Instant Payment",
+                instantPayment: "Cash Out After 30 Days",
                 paymentMethod: "All Payment Methods Accepted",
             },
             {
                 name: "PRO PLAN",
                 cost: "$10000",
                 interestRate: "ROI: 1.5% daily",
-                instantPayment: "Instant Payment",
+                instantPayment: "Cash Out After 30 Days",
                 paymentMethod: "All Payment Methods Accepted",
             },
         ],
@@ -88,22 +88,40 @@ export default class UserDashBoard extends Component{
                 header:  "Forgotten password?",
                 content: " From login page. \n•Enter your registered email address for the reset link to be sent to you \n•Click or copy out the reset link sent to you to create new password. "
             }
-        ]
+        ],
+        navigationHidden: true
     }
 
     changeCurrentPage = page =>{
         this.setState({current_page: page})
     }
 
+    changeNavigationHidden = hidden =>{
+        this.setState({ navigationHidden: hidden })
+    }
+
     render() {
-        const{ navigations, current_page, faq, plans } = this.state;
+        const{ navigations, current_page, faq, plans, navigationHidden } = this.state;
         return (
             <div className="user-dashboard">
                 {
                     this.props.authenticated ?
                     <React.Fragment>
-                        <UserDashBoardNav user={ this.props.authenticatedUser } navigations={ navigations } changeCurrentPage={ this.changeCurrentPage } setAuthentication={ this.props.setAuthentication } setAuthenticatedUser={ this.props.setAuthenticatedUser }/>
-                        <UserDashBoardBody changeCurrentPage={ this.changeCurrentPage } current_page={ current_page } userProfile={ this.props.authenticatedUser } faq={ faq } plans={ plans }/>
+                        <UserDashBoardNav 
+                            hidden={ navigationHidden } 
+                            setHidden={ this.changeNavigationHidden } 
+                            user={ this.props.authenticatedUser } 
+                            navigations={ navigations } 
+                            changeCurrentPage={ this.changeCurrentPage } 
+                            setAuthentication={ this.props.setAuthentication } 
+                            setAuthenticatedUser={ this.props.setAuthenticatedUser }/>
+                        <UserDashBoardBody 
+                            changeCurrentPage={ this.changeCurrentPage } 
+                            current_page={ current_page }
+                            userProfile={ this.props.authenticatedUser } 
+                            faq={ faq } 
+                            plans={ plans } 
+                            changeCurrentPage={ this.changeCurrentPage }/>
                     </React.Fragment>
                     : <Redirect to="/auth/login"/>
                 }

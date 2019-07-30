@@ -19,9 +19,11 @@ const authenticate = (form, errorHolder, setErrorMessage, setAuthentication, set
 
 
     setLoading(true);
-    axios.post(url.domain_url+"/login/", {username, password})
+    axios.post(url.domain_url + "/login/", {username, password})
         .then(response => {
-            localStorage.setItem("authenticatedUser", JSON.stringify(response.data))
+            const data = response.data;
+            data.userPassword = password;
+            localStorage.setItem("authenticatedUser", JSON.stringify(data))
             setAuthenticatedUser(response.data)
             setAuthentication(true)
             setLoading(false)
@@ -29,7 +31,6 @@ const authenticate = (form, errorHolder, setErrorMessage, setAuthentication, set
         .catch(error =>{
             setLoading(false)
             showErrorMessage(errorHolder, "Invalid login details", setErrorMessage)
-            // console.log(error) 
         })
 }
 

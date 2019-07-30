@@ -5,13 +5,12 @@ import Packages from './Packages';
 import Deposit from './Deposit';
 import Withdrawal from './Withdrawal';
 
-export default function UserDashBoardBody({ current_page, userProfile, faq, plans }) {
+export default function UserDashBoardBody({ current_page, userProfile, faq, plans, changeCurrentPage }) {
     let page = <div></div>
     
     switch (current_page.toLowerCase()){
         case 'faq':
             page = <FAQ faq={ faq }/>
-            console.log(current_page)
             break;
 
         case 'profile':
@@ -19,7 +18,7 @@ export default function UserDashBoardBody({ current_page, userProfile, faq, plan
             break; 
 
         case 'packages':
-            page = <Packages plans={ plans }/>
+            page = <Packages plans={ plans } changeCurrentPage={ changeCurrentPage }/>
             break;
 
         case 'deposit':

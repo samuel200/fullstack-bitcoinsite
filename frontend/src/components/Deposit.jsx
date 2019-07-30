@@ -9,7 +9,6 @@ export default function Deposit({ packageName }) {
         if(bitcoinAddress === ""){
             axios.get(url.domain_url+"/bitcoin_address/")
             .then(response => {
-                console.log(response.data);
                 setBitcoinAddress(response.data.address)
             })
             .catch(error=> error)
@@ -24,7 +23,7 @@ export default function Deposit({ packageName }) {
                 borderRadius: "5px",
             }}/> */}
             <div className="bitcoin-address">
-                Bitcoin Address: { bitcoinAddress }
+                Bitcoin Wallet Address: { bitcoinAddress }
             </div>
             <sub> 
                 when transaction is done contact our customer live service personel with proof of payment to get balance update.<br />

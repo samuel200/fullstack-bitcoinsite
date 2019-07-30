@@ -24,7 +24,6 @@ export default function UserNavProfile({ imageURL, userName, hidden }) {
         e.preventDefault();
         
         const formData = new FormData(this);
-        console.log(formData);
         axios({
             method: 'post',
             url: url.domain_url+"/profile/"+ username + "/",

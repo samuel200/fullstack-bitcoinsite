@@ -6,6 +6,7 @@ import '../css/Auth.css'
 export default function UserPasswordChange(){
     let [errorMessage, setErrorMessage] = useState("Error");
     let [loading, setLoading] = useState(false);
+    const { username, userPassword } = JSON.parse(localStorage.getItem('authenticatedUser'));
 
     const showErrorMessage = (errorHolder, errorMessage)=>{
         setErrorMessage(errorMessage);
@@ -16,29 +17,26 @@ export default function UserPasswordChange(){
     }
 
     const onSubmit = form =>{
-        const { username, userPassword } = JSON.parse(localStorage.getItem('authenticatedUser'));
-        const oldPassword = form.querySelector("input[name='old-password']");
         const newPassword = form.querySelector("input[name='new-password']");
         const errorHolder = form.querySelector("div.error-message");
 
-        if(newPassword.value !== "" && oldPassword.value !== "" && oldPassword.value === userPassword){
-            if(newPassword.value === oldPassword.value){
+        if(newPassword.value !== "" && userPassword.value === newPassword.value){
+            setLoading(true);
+            axios.post(url.domain_url + "/password_change/" + username + "/", {password: newPassword.value})
+                .then(response => {
+                    setLoading(false);
+                    newPassword.value = "";
+                })
+                .catch(error =>{
+                    setLoading(false)
+                    showErrorMessage(errorHolder, "Invalid password")
+                })
+        }else{
+            if(newPassword.value === userPassword){
                 showErrorMessage(errorHolder, "Password cannot be the same as the previous")
             }else{
-                setLoading(true);
-                axios.post(url.domain_url + "/password_change/" + username + "/", {password: newPassword.value})
-                    .then(response => {
-                        setLoading(false);
-                        newPassword.value = "";
-                        oldPassword.value = "";
-                    })
-                    .catch(error =>{
-                        setLoading(false)
-                        showErrorMessage(errorHolder, "Invalid password")
-                    })
+                showErrorMessage(errorHolder, "Field value incorrect")
             }
-        }else{
-            showErrorMessage(errorHolder, "Field value incorrect")
         }
     }
 
@@ -50,7 +48,7 @@ export default function UserPasswordChange(){
             <h3>Change Password</h3>
             <div style={{position: "relative"}}>
                 <div className="error-message">{ errorMessage }</div>
-                <input type="password" placeholder="Old Password" name="old-password"/>
+                <input type="password" placeholder="Old Password" name="old-password" value={ userPassword }/>
                 <input type="password" placeholder="New Password" name="new-password"/>
                 <i className="fas fa-spinner" style={{display: loading ? "block" : "none"}}></i>
                 <input type="submit" value="Submit" disabled={!loading ? false : true} />

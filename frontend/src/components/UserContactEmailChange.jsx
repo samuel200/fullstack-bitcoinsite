@@ -19,7 +19,6 @@ export default function UserContactEmailChange({ userProfile }) {
         const { username } = JSON.parse(localStorage.getItem('authenticatedUser'));
         const email = form.querySelector("input[name='email_change']");
         const errorHolder = form.querySelector("div.error-message");
-        console.log(email);
         if(email.value !== ""){
             setLoading(true);
             axios.post(url.domain_url + "/email_change/" + username + "/", {email: email.value})

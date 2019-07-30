@@ -194,7 +194,6 @@ input[type="password"] {
     border-radius: 10px;
     font-weight: bold;
     top: -140px;
-    left: 35%;
     z-index: 5;
     font-size: .8em;
 }
@@ -216,7 +215,7 @@ input[type="password"] {
     min-width: 30vw;
     min-height: 55vh;
     margin: auto;
-    background: rgb(60, 99, 114);
+    background: #2f3e47;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -265,5 +264,9 @@ input[type="password"] {
 @media screen and (max-width: 760px){
     div.form-holder{
         width: 90%;
+    }
+
+    #withdrawal-form{
+        width: 80%;
     }
 }

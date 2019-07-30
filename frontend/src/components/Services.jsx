@@ -8,7 +8,6 @@ export default class Services extends Component {
 
     componentDidMount(){
         this.props.setPosition("services", this.innerHTML)
-        console.log(this.innerHTML)
     }
 
     render() {

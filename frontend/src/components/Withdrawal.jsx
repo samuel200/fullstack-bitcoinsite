@@ -21,7 +21,7 @@ export default function Withdrawal() {
 
         inputs.forEach(input=>{
             if(input.value == ""){
-                showErrorMessage(errorHolder, "All fields are required")
+                showErrorMessage(errorHolder, "Empty field submitted")
                 blank = true;
                 return ;
             }
@@ -34,6 +34,7 @@ export default function Withdrawal() {
                     input.value = ""
                 })
                 setLoading(false);
+                showErrorMessage(errorHolder, "Payment Request Successful");
             }, 4000)
         }
     }
@@ -41,13 +42,10 @@ export default function Withdrawal() {
         <div>
             <h2>Withdrawal</h2>
             <form onSubmit={ onSubmit }>
-                <div id="withdrawal-form" style={ {position: 'relative'} }>
+                <div id="withdrawal-form" style={ {position: 'relative', background: "#2f3e47 !important"} }>
                     <div className="error-message">{ errorMessage }</div>
-                    <input type="text" name="account-name" placeholder="Account Name"/>
-                    <input type="text" name="bank-name" placeholder="Bank Name"/>
-                    <input type="text" name="account-number" placeholder="Account Number"/>
-                    <input type="text" name="amount" placeholder="Amount"/>
-                    <input type="text" name="email" placeholder="Email"/>
+                    <p>Make sure you provide a valid <b>BitCoin Wallet Address</b> to avoid payment issues.</p>
+                    <input type="text" name="text" placeholder="BitCoin Address"/>
                 <div>
                     <i className="fas fa-spinner fa-spin" style={{display: loading ? "inline" : "none"}}></i>
                     <input type="submit" value="Submit" disabled={!loading ? false : true}/></div>
