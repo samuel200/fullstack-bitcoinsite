@@ -89,7 +89,7 @@ export default class UserDashBoard extends Component{
                 content: " From login page. \n•Enter your registered email address for the reset link to be sent to you \n•Click or copy out the reset link sent to you to create new password. "
             }
         ],
-        navigationHidden: true
+        navigationHidden: window.innerwidth < 1080 ? true : false
     }
 
     changeCurrentPage = page =>{
